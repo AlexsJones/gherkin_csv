@@ -9,3 +9,12 @@ Feature: Log into blinkbox books
     Given I am signed in
     When I do something
     Then something else happens
+
+  Scenario Outline:
+    Given this is a scenario Outline
+    When I do something
+    Then it works
+
+    Examples:
+      | A|
+      | 1| 
