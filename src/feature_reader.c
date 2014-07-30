@@ -64,13 +64,27 @@ void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
   jnx_node *head = lines->head; 
   while(head) {
     printf("->%s\n",head->_data);
+    int i;
+    for(i=0;i<2;++i) {
+      if(strstr(head->_data,action_words[i]) != NULL) {
+        switch(i) {
+          case FEATURE:
+            break;
+          case SCENARIO:
+            printf("->\n");
+            while(head) {
+              if(strstr(head->_data,action_words[i]) != NULL) break;
+              printf("- - %s\n",head->_data);
+              head = head->next_node;
+            }
+            break;
+        }
+      }
+
+    }
+    if(head)
     head = head->next_node;
   }
-  // int i;
-  // for(i=0;i<2;++i) { 
-  //  if(strstr(line,action_words[i]) != NULL) {
-  //}
-  // }
 }
 void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
 
@@ -87,7 +101,6 @@ void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
       char *line = malloc((line_count * sizeof(char)) + sizeof(char));
       bzero(line,(line_count *sizeof(char)) + sizeof(char));
       memcpy(line,offset,line_count * sizeof(char));
-      
       char *trimmed = strdup(trim(line));
       free(line);
       jnx_list_add(lines,trimmed);
