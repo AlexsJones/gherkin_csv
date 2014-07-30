@@ -58,26 +58,23 @@ char *trim(char *str)
   }
   return str;
 }
-void feature_reader_process_line(char *line, feature_obj *fo) {
+void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
   const char *action_words[3] = {"Feature", "Scenario","Scenario Outline"};
-  int i;
-  for(i=0;i<3;++i) {
-    if(strstr(line,action_words[i]) != NULL) {
-      switch(i) {
-        case FEATURE:
-          fo->feature_name = line; 
-          printf("%s\n",fo->feature_name);
-          break;
-        case SCENARIO:
 
-          break;
-      }
-    }else {
-
-    }
+  jnx_node *head = lines->head; 
+  while(head) {
+    printf("->%s\n",head->_data);
+    head = head->next_node;
   }
+  // int i;
+  // for(i=0;i<2;++i) { 
+  //  if(strstr(line,action_words[i]) != NULL) {
+  //}
+  // }
 }
 void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
+
+  jnx_list *lines = jnx_list_create();
 
   while(*buffer != '\0') {
     int line_count =0;
@@ -87,17 +84,17 @@ void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
     }
     char *offset = buffer - line_count;
     if(line_count > 0) {
-      char *line = malloc((sizeof(line_count) * sizeof(char)) + sizeof(char));
-      bzero(line,(sizeof(line_count) *sizeof(char)) + sizeof(char));
-      memcpy(line,offset,line_count);
-
-      char *trimmed_line = strdup(trim(line));
+      char *line = malloc((line_count * sizeof(char)) + sizeof(char));
+      bzero(line,(line_count *sizeof(char)) + sizeof(char));
+      memcpy(line,offset,line_count * sizeof(char));
+      
+      char *trimmed = strdup(trim(line));
       free(line);
-      printf("=>%s\n",trimmed_line);
-      feature_reader_process_line(trimmed_line,fo); 
+      jnx_list_add(lines,trimmed);
     }
     buffer++;
   }
+  feature_reader_process_lines(lines,fo);
 }
 feature_obj* feature_reader_create(const char *fpath) {
 
@@ -108,6 +105,9 @@ feature_obj* feature_reader_create(const char *fpath) {
   }
 
   feature_obj *fo = malloc(sizeof(feature_obj));
+  fo->scenario_count = 0;
+  fo->scenarios = jnx_vector_create();
+
   char *bufferptr = obuffer;
   feature_reader_parse(fo,obuffer,br);
 

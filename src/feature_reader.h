@@ -18,6 +18,8 @@
 #ifndef __FEATURE_READER_H__
 #define __FEATURE_READER_H__
 #include <jnxc_headers/jnxlist.h>
+#include <jnxc_headers/jnxcheck.h>
+#include <jnxc_headers/jnxvector.h>
 /*
  * Example outputting
  *
@@ -36,7 +38,8 @@ typedef struct scenario_obj {
 typedef struct feature_obj {
   char *feature_name;
   size_t scenario_count;
-  jnx_list *scenarios;
+  jnx_vector *scenarios;
+  char **raw_lines;
 }feature_obj;
 
 feature_obj* feature_reader_create(const char *fpath);
