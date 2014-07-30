@@ -39,7 +39,6 @@ typedef struct feature_obj {
   char *feature_name;
   size_t scenario_count;
   jnx_vector *scenarios;
-  char **raw_lines;
 }feature_obj;
 
 feature_obj* feature_reader_create(const char *fpath);
