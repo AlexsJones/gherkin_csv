@@ -20,11 +20,13 @@
 #include <stdio.h>
 #include <jnxc_headers/jnxfile.h>
 
-#define FEATURE "Feature"
-#define SCENARIO "Scenario"
-#define GIVEN "Given"
-#define WHEN "When"
-#define THEN "Then"
+typedef enum e_action {
+  FEATURE,
+  SCENARIO,
+  SCENARIO_OUTLINE,
+  STEP
+}e_action;
+
 char *trim(char *str)
 {
   size_t len = 0;
@@ -40,10 +42,6 @@ char *trim(char *str)
   len = strlen(str);
   endp = str + len;
 
-  /*  Move the front and back pointers to address
-   *       * the first non-whitespace characters from
-   *            * each end.
-   *                 */
   while( isspace(*(++frontp)) );
   while( isspace(*(--endp)) && endp != frontp );
 
@@ -52,21 +50,32 @@ char *trim(char *str)
   else if( frontp != str &&  endp == frontp )
     *str = '\0';
 
-  /*  Shift the string so that it starts at str so
-   *       * that if it's dynamically allocated, we can
-   *            * still free it on the returned pointer.  Note
-   *                 * the reuse of endp to mean the front of the
-   *                      * string buffer now.
-   *                           */
   endp = str;
   if( frontp != str )
   {
     while( *frontp ) *endp++ = *frontp++;
     *endp = '\0';
   }
-
-
   return str;
+}
+void feature_reader_process_line(char *line, feature_obj *fo) {
+  const char *action_words[3] = {"Feature", "Scenario","Scenario Outline"};
+  int i;
+  for(i=0;i<3;++i) {
+    if(strstr(line,action_words[i]) != NULL) {
+      switch(i) {
+        case FEATURE:
+          fo->feature_name = line; 
+          printf("%s\n",fo->feature_name);
+          break;
+        case SCENARIO:
+
+          break;
+      }
+    }else {
+
+    }
+  }
 }
 void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
 
@@ -81,14 +90,14 @@ void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
       char *line = malloc((sizeof(line_count) * sizeof(char)) + sizeof(char));
       bzero(line,(sizeof(line_count) *sizeof(char)) + sizeof(char));
       memcpy(line,offset,line_count);
-      
+
       char *trimmed_line = strdup(trim(line));
       free(line);
-      printf("=> %s\n",trimmed_line);
+      printf("=>%s\n",trimmed_line);
+      feature_reader_process_line(trimmed_line,fo); 
     }
     buffer++;
   }
-  printf("\n");
 }
 feature_obj* feature_reader_create(const char *fpath) {
 
