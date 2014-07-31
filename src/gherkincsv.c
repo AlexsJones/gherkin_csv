@@ -57,6 +57,5 @@ int main(int argc, char **argv) {
   if(!fo) {
     printf("Sorry: unable to create a feature reader object from the file path %s\n",fep);
   }
-
   return 0;
 }

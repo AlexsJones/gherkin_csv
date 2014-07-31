@@ -38,10 +38,11 @@ typedef struct scenario_obj {
 
 typedef struct feature_obj {
   char *feature_name;
+  const char *fpath;
   size_t scenario_count;
   jnx_vector *scenarios;
 }feature_obj;
 
 feature_obj* feature_reader_create(const char *fpath);
-
+void feature_reader_destroy(feature_obj **fo);
 #endif

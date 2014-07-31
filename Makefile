@@ -115,6 +115,30 @@ gherkin_csv/fast:
 	$(MAKE) -f CMakeFiles/gherkin_csv.dir/build.make CMakeFiles/gherkin_csv.dir/build
 .PHONY : gherkin_csv/fast
 
+src/csv_writer.o: src/csv_writer.c.o
+.PHONY : src/csv_writer.o
+
+# target to build an object file
+src/csv_writer.c.o:
+	$(MAKE) -f CMakeFiles/gherkin_csv.dir/build.make CMakeFiles/gherkin_csv.dir/src/csv_writer.c.o
+.PHONY : src/csv_writer.c.o
+
+src/csv_writer.i: src/csv_writer.c.i
+.PHONY : src/csv_writer.i
+
+# target to preprocess a source file
+src/csv_writer.c.i:
+	$(MAKE) -f CMakeFiles/gherkin_csv.dir/build.make CMakeFiles/gherkin_csv.dir/src/csv_writer.c.i
+.PHONY : src/csv_writer.c.i
+
+src/csv_writer.s: src/csv_writer.c.s
+.PHONY : src/csv_writer.s
+
+# target to generate assembly for a file
+src/csv_writer.c.s:
+	$(MAKE) -f CMakeFiles/gherkin_csv.dir/build.make CMakeFiles/gherkin_csv.dir/src/csv_writer.c.s
+.PHONY : src/csv_writer.c.s
+
 src/feature_reader.o: src/feature_reader.c.o
 .PHONY : src/feature_reader.o
 
@@ -172,6 +196,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... gherkin_csv"
 	@echo "... rebuild_cache"
+	@echo "... src/csv_writer.o"
+	@echo "... src/csv_writer.i"
+	@echo "... src/csv_writer.s"
 	@echo "... src/feature_reader.o"
 	@echo "... src/feature_reader.i"
 	@echo "... src/feature_reader.s"
