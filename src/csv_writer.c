@@ -100,10 +100,10 @@ int csv_writer(feature_obj *fo,char *formatters[],size_t formatterc) {
     JNX_LOGC(JLOG_NORMAL,"Current scenario has %zu lines\n",scenario->num_lines);
     void *data;
     //new scenario
-    csv_writer_write(co,"----\n");
+    csv_writer_write(co,"----,,\n");
     while((data = jnx_list_remove_front(&scenario->lines)) != NULL) {
       //new line 
-      char *formatted_line = csv_writer_create_formatted_line("%s\n",data);
+      char *formatted_line = csv_writer_create_formatted_line("%s,,\n",data);
       csv_writer_write(co,formatted_line);
       free(formatted_line);
       JNX_LOGC(JLOG_NORMAL,"--%s\n",data);

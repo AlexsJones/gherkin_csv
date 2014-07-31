@@ -4,8 +4,8 @@ gherkin_csv
 
 Converts a feature file into a csv e.g. demo.feature => demo.csv
 
-![Excel](doc/excel.png) 
 ![Vim](doc/vim.png)
+![Excel](doc/excel.png) 
 
 
 ##usage

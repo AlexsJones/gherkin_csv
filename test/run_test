@@ -1,1 +1,1 @@
-./gherkin_csv --feature test/demo.feature --output .
+./gherkin_csv --feature test/demo.feature
