@@ -21,6 +21,8 @@ cmake
 - OS/X install with `brew install cmake`
 - Linux install with a package manager (e.g. yum install cmake || apt-get install cmake)
 - Manual install http://www.cmake.org/cmake/resources/software.html
+- 
+
 ##Installation
 
 ```
