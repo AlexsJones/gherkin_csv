@@ -16,6 +16,11 @@ $>gherkin_csv --feature demo.feature
 ```
 
 ##Installation
+
+```
+git clone https://github.com/AlexsJones/gherkin_csv.git
+```
+
 Build deps first
 ```
 git submodule init
