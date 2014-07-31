@@ -17,6 +17,7 @@
  */
 #include <stdlib.h>
 #include <string.h>
+#include <jnxc_headers/jnxfile.h>
 #include "csv_writer.h"
 
 typedef struct csv_obj {
@@ -76,6 +77,11 @@ char *csv_writer_create_formatted_line(const char *format,...) {
 int csv_writer(feature_obj *fo, const char *opath,char *formatters[],size_t formatterc) {
   csv_obj *co = csv_writer_create(fo,opath);
 
+  if(jnx_file_exists(co->fname)) {
+    JNX_LOGC(JLOG_ALERT,"File already exists -> %s\n",co->fname);
+    csv_writer_destroy(&co);
+    return 1;
+  }
 
   csv_writer_destroy(&co);
   return 0;
