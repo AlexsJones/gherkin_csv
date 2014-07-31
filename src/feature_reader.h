@@ -18,6 +18,7 @@
 #ifndef __FEATURE_READER_H__
 #define __FEATURE_READER_H__
 #include <jnxc_headers/jnxlist.h>
+#include <jnxc_headers/jnxlog.h>
 #include <jnxc_headers/jnxcheck.h>
 #include <jnxc_headers/jnxvector.h>
 /*

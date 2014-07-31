@@ -68,23 +68,39 @@ void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
       if(strstr(head->_data,action_words[i]) != NULL) {
         switch(i) {
           case FEATURE:
-          fo->feature_name = head->_data;
+            fo->feature_name = head->_data;
             break;
           case SCENARIO:
-            printf("->\n");
+            JNX_LOGC(JLOG_NORMAL,"->\n");
             while(head) {
+              scenario_obj *so=NULL;
+            
               while(head && !strstr(head->_data,action_words[1])) {
-                printf("-:%s\n",head->_data);
+                if(!so) {
+                  JNX_LOGC(JLOG_NORMAL,"Created scenario object\n");
+                  so = malloc(sizeof(scenario_obj)); 
+                  so->lines = jnx_list_create();
+                }
+                JNX_LOGC(JLOG_NORMAL,"-:%s\n",head->_data);
+                if(so) {
+                  JNX_LOGC(JLOG_NORMAL,"Adding lines\n");
+                  jnx_list_add(so->lines,head->_data);
+                  so->num_lines++;
+                }
                 head = head->next_node;
               }
-              printf("-------\n");
+              JNX_LOGC(JLOG_NORMAL,"-------\n");
+              if(so) {
+                jnx_vector_insert(fo->scenarios,so);
+                fo->scenario_count++;
+                so = NULL;
+              }
               if(head)
-              head = head->next_node;
+                head = head->next_node;
             }
             break;
         }
       }
-
     }
     if(head)
       head = head->next_node;
@@ -127,7 +143,10 @@ feature_obj* feature_reader_create(const char *fpath) {
 
   char *bufferptr = obuffer;
   feature_reader_parse(fo,obuffer,br);
-
   free(bufferptr);
+  
+  JNX_LOGC(JLOG_NORMAL,"--- Feature Object ---\n");
+  JNX_LOGC(JLOG_NORMAL,"Scenarios: %d\n",fo->scenario_count);
+  JNX_LOGC(JLOG_NORMAL,"----------------------\n");
   return NULL;
 }
