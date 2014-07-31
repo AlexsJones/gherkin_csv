@@ -1,4 +1,4 @@
-Feature: Log into blinkbox books
+Feature: Log into the app
 
   Scenario: I want to sign in
     Given the anonymous library screen is displayed
@@ -12,7 +12,7 @@ Feature: Log into blinkbox books
 
   Scenario Outline:
     Given this is a scenario Outline
-    When I do something
+    When I do <A>
     Then it works
 
     Examples:
