@@ -1,9 +1,5 @@
 Feature: Log into the app,iPhone,Android
 ----,,
-Given the anonymous library screen is displayed,,
-When I sign in,,
-Then I should be on the user library screen,,
-----,,
 Given I am signed in,,
 When I do something,,
 Then something else happens,,

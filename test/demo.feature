@@ -1,10 +1,5 @@
 Feature: Log into the app
 
-  Scenario: I want to sign in
-    Given the anonymous library screen is displayed
-    When I sign in
-    Then I should be on the user library screen
-
   Scenario: When im signed in
     Given I am signed in
     When I do something
