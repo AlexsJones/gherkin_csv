@@ -16,6 +16,17 @@ $>gherkin_csv --feature demo.feature
 ```
 
 ##Installation
+Build deps first
+```
+git submodule init
+git submodule update
+cd jnxlibc
+cmake .
+make
+sudo make install 
+cd ../
+```
+Now build the parser
 ```
 cmake
 make 
@@ -26,7 +37,6 @@ sudo make install
 
 ```
 cmake
-jnxlibc (https://github.com/AlexsJones/jnxlibc)
 ```
 
 ##Todo
