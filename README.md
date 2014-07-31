@@ -27,7 +27,7 @@ cmake
 On 64bit OSX run and the latest compiled binary will be copied across 
 ```
 ./install.sh
-
+```
 ##Installation
 
 ```
