@@ -19,6 +19,7 @@
 #include <getopt.h>
 #include <stdio.h>
 #include "feature_reader.h"
+#include "csv_writer.h"
 void usage() {
   printf("------------gherkin_csv------------\n");
   printf("Converts feature files into csv's  \n");
@@ -52,10 +53,12 @@ int main(int argc, char **argv) {
   if(!fep || !op) {
     usage();
   }
-  
+
   feature_obj *fo = feature_reader_create(fep);
   if(!fo) {
     printf("Sorry: unable to create a feature reader object from the file path %s\n",fep);
   }
+  char *formatters[2] = { "iPhone","Android"};
+  int res = csv_writer(fo,op,formatters,2);
   return 0;
 }

@@ -18,5 +18,5 @@
 #ifndef __CSV_WRITER_H__
 #define __CSV_WRITER_H__
 #include "feature_reader.h"
-int csv_writer(feature_obj *fo, const char *opath);
+int csv_writer(feature_obj *fo, const char *opath,char *formatters[],size_t formatterc);
 #endif
