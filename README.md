@@ -7,6 +7,7 @@ Converts a feature file into a csv e.g. demo.feature => demo.csv
 ![Vim](doc/vim.png)
 ![Excel](doc/excel.png) 
 
+Example output: https://github.com/AlexsJones/gherkin_csv/blob/master/test/demo.csv
 
 ##usage
 
@@ -27,3 +28,9 @@ sudo make install
 cmake
 jnxlibc (https://github.com/AlexsJones/jnxlibc)
 ```
+
+##Todo
+
+- Custom fields e.g. iPad4, iPhone5s
+- More configuration options
+- Multiple input files
