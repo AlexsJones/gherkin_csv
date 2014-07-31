@@ -22,6 +22,12 @@ cmake
 - Linux install with a package manager (e.g. yum install cmake || apt-get install cmake)
 - Manual install http://www.cmake.org/cmake/resources/software.html
 
+##Quick installation 
+
+On 64bit OSX run and the latest compiled binary will be copied across 
+```
+./install.sh
+
 ##Installation
 
 ```
