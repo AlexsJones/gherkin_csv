@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.0.0/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/alexjo/Projects/gherkin_csv
+CMAKE_SOURCE_DIR = /Users/alexjo/Projects/gherkin_csv/gherkin_csv
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/alexjo/Projects/gherkin_csv
+CMAKE_BINARY_DIR = /Users/alexjo/Projects/gherkin_csv/gherkin_csv
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -114,9 +114,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexjo/Projects/gherkin_csv/CMakeFiles /Users/alexjo/Projects/gherkin_csv/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexjo/Projects/gherkin_csv/gherkin_csv/CMakeFiles /Users/alexjo/Projects/gherkin_csv/gherkin_csv/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexjo/Projects/gherkin_csv/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/alexjo/Projects/gherkin_csv/gherkin_csv/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

@@ -71,7 +71,6 @@ void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
             fo->feature_name = head->_data;
             break;
           case SCENARIO:
-            JNX_LOGC(JLOG_NORMAL,"->%s\n");
             while(head) {
               scenario_obj *so=NULL;
               while(head && !strstr(head->_data,action_words[1])) {
