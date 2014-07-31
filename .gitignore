@@ -1,3 +1,5 @@
+gherkin_csv
+log
 CMakeFiles
 *.cmake
 CMakeCache*
