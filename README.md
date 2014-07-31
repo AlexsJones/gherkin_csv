@@ -26,6 +26,10 @@ cmake
 
 On 64bit OSX run and the latest compiled binary will be copied across 
 ```
+git clone https://github.com/AlexsJones/gherkin_csv.git
+```
+
+```
 ./install.sh
 ```
 ##Installation
