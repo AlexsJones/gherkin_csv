@@ -75,12 +75,19 @@ char *csv_writer_create_formatted_line(const char *format,...) {
   return NULL;
 }
 int csv_writer(feature_obj *fo, const char *opath,char *formatters[],size_t formatterc) {
+  JNXCHECK(fo);
   csv_obj *co = csv_writer_create(fo,opath);
 
   if(jnx_file_exists(co->fname)) {
     JNX_LOGC(JLOG_ALERT,"File already exists -> %s\n",co->fname);
     csv_writer_destroy(&co);
     return 1;
+  }
+  
+  int x;
+  for(x=0;x<fo->scenario_count; ++x) {
+    scenario_obj *scenario = fo->scenarios->vector[x]->data;
+    JNX_LOGC(JLOG_NORMAL,"Current scenario has %zu lines\n",scenario->num_lines);
   }
 
   csv_writer_destroy(&co);

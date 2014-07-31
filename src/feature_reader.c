@@ -79,6 +79,7 @@ void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
                   JNX_LOGC(JLOG_NORMAL,"Created scenario object\n");
                   so = malloc(sizeof(scenario_obj)); 
                   so->lines = jnx_list_create();
+                  so->num_lines = 0;
                 }
                 JNX_LOGC(JLOG_NORMAL,"-:%s\n",head->_data);
                 if(so) {
