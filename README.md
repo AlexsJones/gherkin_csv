@@ -26,8 +26,12 @@ cmake
 
 On 64bit OSX run and the latest compiled binary will be copied across 
 ```
-./install.sh
+git clone https://github.com/AlexsJones/gherkin_csv.git
+```
 
+```
+./install.sh
+```
 ##Installation
 
 ```
@@ -52,7 +56,7 @@ sudo make install
 ```
 
 ##Todo
-
+- Correctly free all memory and data structures after use for sake of cleanliness
 - Custom fields e.g. iPad4, iPhone5s
 - More configuration options
 - Multiple input files
