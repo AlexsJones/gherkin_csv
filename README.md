@@ -56,7 +56,7 @@ sudo make install
 ```
 
 ##Todo
-
+- Correctly free all memory and data structures after use for sake of cleanliness
 - Custom fields e.g. iPad4, iPhone5s
 - More configuration options
 - Multiple input files
