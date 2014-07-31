@@ -63,18 +63,22 @@ void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
 
   jnx_node *head = lines->head; 
   while(head) {
-    printf("->%s\n",head->_data);
     int i;
     for(i=0;i<2;++i) {
       if(strstr(head->_data,action_words[i]) != NULL) {
         switch(i) {
           case FEATURE:
+          fo->feature_name = head->_data;
             break;
           case SCENARIO:
             printf("->\n");
             while(head) {
-              if(strstr(head->_data,action_words[i]) != NULL) break;
-              printf("- - %s\n",head->_data);
+              while(head && !strstr(head->_data,action_words[1])) {
+                printf("-:%s\n",head->_data);
+                head = head->next_node;
+              }
+              printf("-------\n");
+              if(head)
               head = head->next_node;
             }
             break;
@@ -83,7 +87,7 @@ void feature_reader_process_lines(jnx_list *lines,feature_obj *fo) {
 
     }
     if(head)
-    head = head->next_node;
+      head = head->next_node;
   }
 }
 void feature_reader_parse(feature_obj *fo,char *buffer, size_t bs) {
