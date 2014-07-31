@@ -1,5 +1,4 @@
 install_manifest.txt
-gherkin_csv
 log
 CMakeFiles
 *.cmake
