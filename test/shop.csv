@@ -1,8 +1,0 @@
-Feature: I want to search and purchase titles from the shop,iPhone,Android
-----,,
-Given I enter <entry> as the search term,,
-Then I should see search suggestions,,
-Examples:,,
-| entry           |,,
-| "Bob Marley"    |,,
-| "Michael Palin" |,,
