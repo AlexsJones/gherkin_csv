@@ -13,7 +13,7 @@ Example output: https://github.com/AlexsJones/gherkin_csv/blob/master/test/demo.
 ##usage
 
 ```
-$>gherkin_csv --feature demo.feature
+$>gherkin_csv --feature demo.feature #=> Creates demo.csv
 ```
 ###Deps
 ```
@@ -26,7 +26,7 @@ cmake
 ##Download (Pre-built)
 
 ####Mach OSX 64bit
-[!Here](https://github.com/AlexsJones/gherkin_csv/raw/master/bin/gherkin_csv)
+[Here](https://github.com/AlexsJones/gherkin_csv/raw/master/bin/gherkin_csv)
 
 
 ##Installation (Built it yourself)
