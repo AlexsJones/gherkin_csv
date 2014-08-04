@@ -134,7 +134,9 @@ void feature_reader_destroy(feature_obj **fo) {
   *fo = NULL;
 }
 feature_obj* feature_reader_create(const char *fpath) {
-
+  if(!fpath) {
+    return NULL;
+  }
   char *obuffer;
   size_t br = jnx_file_read((char*)fpath,&obuffer,"r"); 
   if(br == 0) {

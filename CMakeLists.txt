@@ -3,7 +3,6 @@ set(CMAKE_INSTALL_PREFIX /usr/local)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "bin/")
 project(gherkin_csv)
 include_directories(${PROJECT_INC_DIR}/src)
-
 set(CMAKE_C_FLAGS "-g")
 file(GLOB SRC "src/*.c")
 add_executable(gherkin_csv ${SRC})
