@@ -30,8 +30,8 @@ cmake
 Install it somewhere sensible (/usr/local/bin or /usr/bin).
 Make sure to add it to the PATH in your `.bash_profile` if using a custom location.
 
-
-##Installation (Built it yourself)
+--------------------------------
+##Installation (Build it yourself)
 
 ```
 git clone https://github.com/AlexsJones/gherkin_csv.git
