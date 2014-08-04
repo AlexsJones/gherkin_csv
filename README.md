@@ -27,6 +27,8 @@ cmake
 ####Mach OSX 64bit
 [Here](https://github.com/AlexsJones/gherkin_csv/raw/master/bin/gherkin_csv)
 
+Install it somewhere sensible (/usr/local/bin or /usr/bin) then make sure to add it to the PATH in your `.bash_profile` if using a custom location.
+
 
 ##Installation (Built it yourself)
 
