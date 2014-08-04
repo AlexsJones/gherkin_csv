@@ -23,17 +23,13 @@ cmake
 - Linux install with a package manager (e.g. yum install cmake || apt-get install cmake)
 - Manual install http://www.cmake.org/cmake/resources/software.html
 
-##Quick installation 
+##Download (Pre-built)
 
-On 64bit OSX run and the latest compiled binary will be copied across 
-```
-git clone https://github.com/AlexsJones/gherkin_csv.git
-```
+####Mach OSX 64bit
+[!Here](https://github.com/AlexsJones/gherkin_csv/raw/master/bin/gherkin_csv)
 
-```
-./install.sh
-```
-##Installation
+
+##Installation (Built it yourself)
 
 ```
 git clone https://github.com/AlexsJones/gherkin_csv.git
