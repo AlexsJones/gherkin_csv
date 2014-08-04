@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 set(CMAKE_INSTALL_PREFIX /usr/local)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "bin/")
 project(gherkin_csv)
 include_directories(${PROJECT_INC_DIR}/src)
 
