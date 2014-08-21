@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 #include <jnxc_headers/jnxfile.h>
 #include "csv_writer.h"
 #define EXT ".csv"
@@ -61,7 +62,7 @@ csv_obj *csv_writer_create(feature_obj *fo) {
   strcat(fpath_final,EXT);
   free(fpath_raw);
   co->file_path_name = fpath_final;
-  JNX_LOGC(JLOG_NORMAL,"Setting new name as -> %s\n",co->file_path_name);
+  JNX_LOG(NULL,"Setting new name as -> %s\n",co->file_path_name);
   return co;
 }
 void csv_writer_destroy(csv_obj **co) {
@@ -69,7 +70,7 @@ void csv_writer_destroy(csv_obj **co) {
   *co = NULL;
 }
 size_t csv_writer_write(csv_obj *co,char *line) {
-  JNX_LOGC(JLOG_NORMAL,"Writing %s to => %s\n",line,co->file_path_name);  
+  JNX_LOG(NULL,"Writing %s to => %s\n",line,co->file_path_name);  
   size_t bw = jnx_file_write((char*)co->file_path_name,line,strlen(line),"a");
   return bw;
 }
@@ -86,7 +87,7 @@ int csv_writer(feature_obj *fo,char *formatters[],size_t formatterc) {
   csv_obj *co = csv_writer_create(fo);
 
   if(jnx_file_exists(co->file_path_name)) {
-    JNX_LOGC(JLOG_ALERT,"File already exists -> %s\n",co->file_path_name);
+    JNX_LOG(NULL,"File already exists -> %s\n",co->file_path_name);
     csv_writer_destroy(&co);
     return 1;
   }
@@ -97,7 +98,7 @@ int csv_writer(feature_obj *fo,char *formatters[],size_t formatterc) {
   int x;
   for(x=0;x<fo->scenario_count; ++x) {
     scenario_obj *scenario = fo->scenarios->vector[x]->data;
-    JNX_LOGC(JLOG_NORMAL,"Current scenario has %zu lines\n",scenario->num_lines);
+    JNX_LOG(NULL,"Current scenario has %zu lines\n",scenario->num_lines);
     void *data;
     //new scenario
     csv_writer_write(co,"----,,\n");
@@ -106,7 +107,7 @@ int csv_writer(feature_obj *fo,char *formatters[],size_t formatterc) {
       char *formatted_line = csv_writer_create_formatted_line("%s,,\n",data);
       csv_writer_write(co,formatted_line);
       free(formatted_line);
-      JNX_LOGC(JLOG_NORMAL,"--%s\n",data);
+      JNX_LOG(NULL,"--%s\n",data);
     }
   }
 
